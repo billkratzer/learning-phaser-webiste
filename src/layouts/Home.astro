@@ -1,0 +1,40 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import NavBar from "../components/NavBar.astro";
+import PostListItem from "../components/PostListItem.astro";
+
+const { frontmatter } = Astro.props;
+
+const posts = await Astro.glob('../pages/posts/*.md')
+
+posts.sort(function(post1,post2){
+	return new Date(post2.frontmatter.pubDate) - new Date(post1.frontmatter.pubDate);
+})
+
+---
+
+<html lang="en">
+	<BaseHead title={frontmatter.title}/>
+
+	<body class="bg-gray-900">
+		<NavBar/>
+		<div id="hero" class="px-6 h-72 bg-[url('/public/images/hero/front_page_hero.png')] bg-no-repeat-center bg-fixed">
+			<div class="py-18 sm:py-24 mx-auto max-w-2xl text-center">
+				<h1 class="text-3xl  text-transparent text-8xl bg-clip-text bg-gradient-to-r from-purple-300 to-pink-600 font-extrabold font-kanit tracking-tight sm:text-7xl">LEARNING PHASER</h1>
+			</div>
+		</div>
+		<div class="bg-gradient-to-b from-blue-100 to-white border-top border-t-8 pb-4">
+			<div class="mx-auto max-w-2xl text-left">
+				<article class="mt-4 prose prose-stone prose-md prose-h1:text-3xl">
+					<slot/>
+				</article>
+
+				<h1 class="mt-8 font-bold text-3xl">Recent Posts</h1>
+				<ul>
+					{ posts.map((post) => <PostListItem post={ post }/>) }
+				</ul>
+			</div>
+		</div>
+	</body>
+
+</html>

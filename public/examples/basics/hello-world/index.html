@@ -1,0 +1,28 @@
+<html lang="en">
+<head>
+    <title>Hello World!</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/phaser/3.60.0/phaser.min.js" integrity="sha512-YQL0GVx/Too3vZjBl9plePRIYsRnd1s8N6QOvXPdZ+JMH2mtRTLQXGUDGjNW6zr1HUgcOIury67IvWe91oeEwQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+    <h1>Hello World!</h1>
+    <p>Our Phaser game is below!</p>
+    <div id="game"></div>
+    <script>
+        var config = {
+            type: Phaser.AUTO,
+            width: 800,
+            height: 600,
+            scene: {
+                create: create
+            }
+        };
+
+        var game = new Phaser.Game(config);
+
+        function create() {
+        }
+    </script>
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+---
+const { post } = Astro.props;
+---
+
+<li class="my-4">
+    <div>
+        <span class="font-bold underline text-blue-900 hover:text-blue-700"><a href={ post.url }>{ post.frontmatter.title }</a></span>
+        <span class="font-regular text-black text-xs"> - { new Date(post.frontmatter.pubDate).toLocaleDateString('en-US', {}) }</span>
+    </div>
+    <div class="font--thin italic text-sm">{ post.frontmatter.description}</div>
+</li>

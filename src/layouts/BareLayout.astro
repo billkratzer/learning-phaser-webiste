@@ -1,0 +1,20 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import NavBar from "../components/NavBar.astro";
+
+---
+
+<html lang="en">
+	<BaseHead title="{title}"/>
+
+	<body class="bg-gray-900">
+		<div id="hero" class="px-6 lg:px-8">
+			<NavBar/>
+		</div>
+		<div class="bg-gradient-to-b from-blue-100 to-white border-top border-t-8">
+			<div class="mx-auto max-w-2xl text-left h-screen">
+				<slot/>
+			</div>
+		</div>
+	</body>
+</html>

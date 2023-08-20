@@ -1,0 +1,17 @@
+---
+import BlogPostItem from "../components/PostListItem.astro";
+import BlogLayout from "../layouts/BlogLayout.astro";
+
+const posts = await Astro.glob('../pages/posts/*.md')
+
+posts.sort(function(post1,post2){
+    return new Date(post2.frontmatter.pubDate) - new Date(post1.frontmatter.pubDate);
+})
+
+---
+<BlogLayout>
+    <h1 class="mt-6 font-bold text-3xl">Recent Posts</h1>
+    <ul>
+        { posts.map((post) => <BlogPostItem post={ post }/>) }
+    </ul>
+</BlogLayout>

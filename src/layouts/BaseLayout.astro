@@ -1,0 +1,34 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import NavBar from "../components/NavBar.astro";
+
+const { frontmatter } = Astro.props;
+const { heroColor1 } = frontmatter;
+const { heroColor2 } = frontmatter;
+const { heroColor3 } = frontmatter;
+---
+
+<html lang="en">
+	<BaseHead title="{title}"/>
+
+	<body class="bg-gray-900">
+		<div id="hero" class="px-6 lg:px-8">
+			<NavBar/>
+			<div class="py-18 sm:py-24 mx-auto max-w-2xl text-center">
+				<h1 class="text-3xl font-bold tracking-tight text-white sm:text-9xl">{frontmatter.heroText1}</h1>
+				<h2 class="mt-6 text-lg leading-8 text-gray-300">{frontmatter.heroText2}</h2>
+			</div>
+		</div>
+		<div class="bg-gradient-to-b from-blue-100 to-white border-top border-t-8">
+			<div class="mx-auto max-w-2xl text-left h-screen">
+				<slot/>
+			</div>
+		</div>
+	</body>
+
+<script is:inline define:vars={{ heroColor1, heroColor2, heroColor3 }}>
+	$().ready(function(){
+		$("#hero").addClass("bg-gradient-to-tr from-" + heroColor1 +" via-" + heroColor2 + " to-" + heroColor3)
+	});
+</script>
+</html>

@@ -1,10 +1,10 @@
-# Overview
 
+# Overview
 The Website for LearningPhaser.com
 
 # Quick Start
 
-This project uses the static site generator [Hugo](https://gohugo.io/).
+This project uses the static site generator [Astro](https://astro.org).
 
 Once hugo is installed on your computer, run the following command from 
 the project directory:

@@ -1,0 +1,19 @@
+---
+import BlogLayout from "./BlogLayout.astro";
+
+const { frontmatter } = Astro.props;
+---
+<BlogLayout>
+	<div class="mx-auto max-w-2xl text-left h-screen">
+		<h1 class="mt-6 font-bold text-3xl">{ frontmatter.title }</h1>
+		<h2 class="pt-1 text-sm italic">By { frontmatter.author} on { new Date(frontmatter.pubDate).toLocaleDateString('en-US', {}) }</h2>
+		<h2 class="text-sm italic">Categories:  { frontmatter.tags.map((tag) => <a class="pr-2 text-blue-900" href={`/tags/${tag}`}>{tag}</a>) }</h2>
+		{
+			frontmatter.image && <img class="py-4" src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
+		}
+
+		<article class="py-4 prose max-w-none prose-stone prose-md prose-h1:pt-4 prose-h1:text-3xl prose-h2:mb-0 prose-h2:text-lg prose-h3:text-sm">
+			<slot/>
+		</article>
+	</div>
+</BlogLayout>
